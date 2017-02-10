@@ -1,0 +1,58 @@
+function loadMenu(id) {
+	menuRC( [ { name : "id", value : id } ] );
+}
+
+function saatFonksiyonu() {
+	
+	var saatElemanı = document.getElementById("saat");
+	var dakikaElemanı = document.getElementById("dakika");
+	var saniyeElemanı = document.getElementById("saniye");
+	
+	if(saatElemanı == null)
+		return;
+	
+	var date = new Date();
+	
+	var saat = date.getHours();
+	var dakika = date.getMinutes();
+	var saniye = date.getSeconds();
+	
+	saatElemanı.innerText = saat;
+	dakikaElemanı.innerText = dakika;
+	saniyeElemanı.innerText = saniye;
+	
+	if(saniye == 10)
+	{
+		arttırRC();
+	}
+	
+	setTimeout(saatFonksiyonu, 1000);
+}
+
+saatFonksiyonu();
+
+var kutu = document.getElementById("kutu");
+
+//document.onmousemove = function(event) { 
+//	
+//	var x = event.clientX;
+//	var y = event.clientY;
+//	
+//	kutu.style.left = x - 10 + "px";
+//	kutu.style.top = y - 10 + "px";
+//}
+
+var counter = 0;
+
+function arttır() {
+	
+	var counterEleman = document.getElementById("counter");
+	
+	counterEleman.innerText = counter;
+	
+	var button = document.getElementById("button");
+	
+	counter++;
+}
+
+button.onclick = function() { arttır(); };

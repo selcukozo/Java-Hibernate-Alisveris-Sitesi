@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.OracleDialect
+		</property>
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+
+		<!-- Assume test is the database name -->
+		<property name="hibernate.connection.url">
+			jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS =
+			(PROTOCOL = TCP)(HOST = db.k8j.net)(PORT = 1521))(CONNECT_DATA =
+			(SERVER = DEDICATED)(SERVICE_NAME = ORCL)))
+		</property>
+		<property name="hibernate.connection.username">
+			java16
+		</property>
+		<property name="hibernate.connection.password">
+			java16
+		</property>
+
+		<property name="autoCommit">
+			false
+		</property>
+		
+		<mapping class="entity.Category" />
+		
+	</session-factory>
+</hibernate-configuration>

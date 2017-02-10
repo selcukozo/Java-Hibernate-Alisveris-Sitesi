@@ -1,0 +1,133 @@
+package entity;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.TreeNode;
+
+import com.ojdbc.Database;
+
+@Entity
+@Table(name = "Category")
+public class Category {
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "Id")
+	private int id;
+	
+	@Id
+	@Column(name = "Name")
+	private String name = null;
+
+	@Column(name = "ParentId")
+	private int parentid = 0;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getParentid() {
+		return parentid;
+	}
+
+	public void setParentid(int parentid) {
+		this.parentid = parentid;
+	}
+	
+	public boolean Add() {
+		if (name != null) {
+			try {
+				try (Connection con = Database.getConnection()) {
+
+					PreparedStatement smt = con.prepareStatement(
+							"INSERT INTO CATEGORY(ID,NAME,PARENTID) VALUES(CATEGORY_SEQ.NEXTVAL,?,?)");
+
+					smt.setString(1, name);
+					smt.setInt(2, parentid);
+
+					ResultSet rs = smt.executeQuery();
+
+					if (rs.next()) {
+						return true;
+					}
+				}
+			} catch (Exception e) {
+			}
+		}
+		return false;
+	}
+
+	public boolean Update() {
+		if (name != null) {
+			try {
+				try (Connection con = Database.getConnection()) {
+
+					PreparedStatement smt = con
+							.prepareStatement("UPDATE CATEGORY SET NAME = ?, PARENTID = ? WHERE ID = ?");
+
+					smt.setString(1, name);
+					smt.setInt(2, parentid);
+					smt.setInt(3, id);
+
+					if (smt.executeUpdate() >= 1) {
+						return true;
+					}
+				}
+			} catch (Exception e) {
+			}
+		}
+		return false;
+	}
+
+	public void SetCategory(int parrentId, Connection con, TreeNode upNode) {
+		if (upNode == null)
+			upNode = new DefaultTreeNode("Root", null);
+		try {
+			PreparedStatement smt = con.prepareStatement("SELECT * FROM CATEGORY WHERE PARENTID = ?");
+			smt.setInt(1, parrentId);
+
+			ResultSet rs = smt.executeQuery();
+			while (rs.next()) {
+
+				Category c = new Category();
+				c.setId(rs.getInt("ID"));
+				c.setName(rs.getString("NAME"));
+				c.setParentid(rs.getInt("PARENTID"));
+
+				TreeNode node = new DefaultTreeNode(c, upNode);
+				SetCategory(rs.getInt("ID"), con, node);
+			}
+		} catch (Exception e) {
+		}
+	}
+
+	public TreeNode GetCategory() {
+		TreeNode upNode = new DefaultTreeNode("Root", null);
+		try (Connection con = Database.getConnection()) {
+			SetCategory(0, con, upNode);
+		} catch (Exception e) {
+		}
+		return upNode;
+	}
+}

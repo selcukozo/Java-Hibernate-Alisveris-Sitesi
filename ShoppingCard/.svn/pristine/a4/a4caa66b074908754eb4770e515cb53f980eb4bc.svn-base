@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+	<link href="css/main.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="main.js"/>
+</h:head>
+
+<h:body>
+
+	<div id="header" class="headerClass">
+
+		<h:form>
+		
+			<p:remoteCommand name="menuRC" action="#{productCollectionBean.menuAction}" oncomplete="" />
+			<p:menubar>
+			
+				<p:submenu label="Elektronik">
+					<p:submenu label="Bilgisayar/Tablet">
+						<p:menuitem value="Dizüstü Bilgisayar" onclick="loadMenu(3)" />
+						<p:menuitem value="Tablet" onclick="loadMenu(2)"/>
+					</p:submenu>
+				</p:submenu>
+				
+				<f:facet name="options">
+					<p:inputText style="margin-right:10px" placeholder="Search" />
+					<p:commandButton type="button" value="Logout"
+						icon="ui-icon-extlink" />
+				</f:facet>
+				
+			</p:menubar>
+		</h:form>
+
+	</div>
+
+	<div id="content">
+		<ui:insert name="content" />
+	</div>
+
+	<div id="footer">
+		<h:outputLabel value="© Murat'ın katkılarıyla... :)" />
+	</div>
+
+</h:body>
+
+</html>

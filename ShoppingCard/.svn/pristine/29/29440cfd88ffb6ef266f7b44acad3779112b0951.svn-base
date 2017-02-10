@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+	<navigation-rule>
+		<from-view-id>Login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Administrator</from-outcome>
+			<to-view-id>Administrator.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>Login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Index</from-outcome>
+			<to-view-id>Index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>registration.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Login</from-outcome>
+			<to-view-id>Login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>Index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ProductsList</from-outcome>
+			<to-view-id>ProductsList.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>ProductsList.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ProductsList</from-outcome>
+			<to-view-id>ProductsList.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>ProductsList.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Product-Detail</from-outcome>
+			<to-view-id>ProductDetail.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

@@ -1,0 +1,47 @@
+package main.java.bean;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import com.ojdbc.Repository;
+
+@ManagedBean
+public class LoginBean {
+
+  private String kullaniciAdi;
+  private String sifre;
+
+  public String getKullaniciAdi() {
+    return kullaniciAdi;
+  }
+
+  public void setKullaniciAdi(String kullaniciAdi) {
+    this.kullaniciAdi = kullaniciAdi;
+  }
+
+  public String getSifre() {
+    return sifre;
+  }
+
+  public void setSifre(String sifre) {
+    this.sifre = sifre;
+  }
+
+  public String giris() throws SQLException, IOException {
+    Repository repo = new Repository();
+
+    if (repo.adminLogin(kullaniciAdi, sifre)) {
+      return "Index";
+    } else {
+      FacesContext context = FacesContext.getCurrentInstance();
+
+      context.addMessage(null, new FacesMessage("Hata", "Giriþ yapýlamadý"));
+
+      return "Login";
+    }
+  }
+}

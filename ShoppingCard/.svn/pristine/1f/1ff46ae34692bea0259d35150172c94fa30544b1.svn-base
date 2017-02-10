@@ -1,0 +1,36 @@
+package main.java.entity;
+
+import org.primefaces.model.StreamedContent;
+
+public class ProductImage {
+  private int id;
+
+  private int productId;
+  // private Blob imageFile;
+  // private BufferedImage image;
+  private StreamedContent image;
+
+  public StreamedContent getImage() {
+    return image;
+  }
+
+  public void setImage(StreamedContent image) {
+    this.image = image;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public int getProductId() {
+    return productId;
+  }
+
+  public void setProductId(int productId) {
+    this.productId = productId;
+  }
+}

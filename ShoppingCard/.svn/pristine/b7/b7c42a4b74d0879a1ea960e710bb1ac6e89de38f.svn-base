@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+
+#header {
+	width: 100%;
+}
+
+#content {
+	margin: 10px;
+}
+
+#footer {
+	width: 100%;
+	height: 50px;
+}
+
+body {
+	margin: 0px;
+	font-family: segoe ui;
+}
+
+.cancelButon {
+	background: red;
+}
+
+.onayButon {
+	background: green;
+}
+
+#kutu {
+	width: 20px;
+	height: 20px;
+	background: crimson;
+	position: absolute;
+}
+
+.loginFormClass {
+	left: 38%;
+	top: 40%;
+	position: absolute;
+	background: lightgray;
+	padding: 12px;
+	border-radius: 20px;
+}
+
+#pie {
+	margin: auto;
+}
+
+.ui-menuitem-text {
+	font-size: 15px;
+	font-weight: 700;
+}
+
+h2 {
+	margin: 0px;
+	padding: 30px;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+.headerClass {
+    background: lightblue;
+}
+.kutu2{    
+	margin: auto;
+    width: 268px;
+	height: auto;
+	border-radius: 10px;
+	background-color: grey;
+	text-align: center;
+	
+}
+.ui-galleria-frame.ui-galleria-frame-active {
+	border: #f28b00 3px solid;
+	border-radius: 5px;
+}
+
+.ui-galleria-filmstrip-wrapper {
+	padding: 3px;	
+}
+
+#detailDiv td
+{
+	width:50%;
+}
+
+#detailDiv table
+{
+	width:100%;
+}

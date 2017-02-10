@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="TemplateOld.xhtml">
+
+	<ui:define name="content">
+
+		<h:form id="form" style="width: 720px; margin: auto;">
+		<p:growl id="messages" showDetail="true" />
+			<div>
+
+				<div style="float: left; width: 50%;">
+
+					<p:galleria panelWidth="310" panelHeight="200"
+						style="margin: auto;"
+						value="#{productDetailBean.selectedProducts.images}" var="image"
+						showCaption="false">
+						<p:graphicImage width="200px" height="200px" url="#{image.renderedImage}" />
+					</p:galleria>
+
+				</div>
+
+				<div style="float: right; width: 50%;">
+
+					<div style="width: 100%">
+						<h:outputLabel value="#{productDetailBean.selectedProducts.name}" />
+					</div>
+
+					<h:panelGrid columns="2">
+
+						<h:outputText
+							value="#{productDetailBean.selectedProducts.price} TL" />
+
+						<p:rating value="#{productDetailBean.productRating}">
+						<p:ajax event="rate" listener="#{productDetailBean.onrate}" update="messages" />
+           					<p:ajax event="cancel" listener="#{productDetailBean.oncancel}" update="messages" />
+						</p:rating>						
+					</h:panelGrid>
+
+				</div>
+
+			</div>
+
+			<div id="detailDiv" style="float: left; width: 100%">
+
+				<c:forEach items="#{productDetailBean.productDetail}" var="detail">
+
+					<c:if test="#{detail.id ne 1}">
+
+						<c:if test="#{productDetailBean.productDetail.indexOf(detail) % 2 eq 0}">
+
+							<h:panelGrid columns="2" style="background:#f1f1f1;">
+								<h:outputLabel value="#{detail.name}" />
+								<h:outputLabel value="#{detail.productDetailMapping.value}" />
+							</h:panelGrid>
+
+						</c:if>
+
+						<c:if
+							test="#{productDetailBean.productDetail.indexOf(detail) % 2 eq 1}">
+
+							<h:panelGrid columns="2">
+								<h:outputLabel value="#{detail.name}" />
+								<h:outputLabel value="#{detail.productDetailMapping.value}" />
+							</h:panelGrid>
+
+						</c:if>
+					</c:if>
+				</c:forEach>
+
+			</div>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

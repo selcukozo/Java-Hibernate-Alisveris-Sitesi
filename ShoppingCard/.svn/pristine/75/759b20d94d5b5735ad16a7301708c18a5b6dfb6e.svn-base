@@ -1,0 +1,66 @@
+package entity;
+
+import java.io.InputStream;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.primefaces.model.StreamedContent;
+
+@Entity
+@Table(name = "PRODUCTIMAGE")
+public class ProductImage {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="G1")
+	@SequenceGenerator(name = "G1", sequenceName = "PRODUCTIMAGE_SEQ")
+	@Column(name = "ID")
+	private int id;
+
+	@Column(name = "PRODUCTID")
+	private int productId;
+	
+	@Column(name = "IMAGE")
+	private byte[] image2;
+	
+	public byte[] getImage2() {
+		return image2;
+	}
+	
+	public void setImage2(byte[] image2) {
+		this.image2 = image2;
+	}
+	
+	// private Blob imageFile;
+	// private BufferedImage image;
+//	private StreamedContent image;
+//
+//	public StreamedContent getImage() {
+//		return image;
+//	}
+//
+//	public void setImage(StreamedContent image) {
+//		this.image = image;
+//	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+}

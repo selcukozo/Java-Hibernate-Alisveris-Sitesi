@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:composite="http://java.sun.com/jsf/composite">
+
+<composite:interface>
+	<composite:attribute name="userName" />
+	<composite:attribute name="password" />
+	<composite:attribute name="action" />
+</composite:interface>
+
+<composite:implementation>
+
+	<h:form styleClass="loginFormClass">
+
+		<h:panelGrid columns="2">
+
+			<h:outputLabel value="#{cc.attrs.userName}" />
+			<h:inputText id="ka" value="#{loginBean.kullaniciAdi}" />
+
+			<h:outputLabel value="#{cc.attrs.password}" />
+			<h:inputText value="#{loginBean.sifre}" />
+
+			<h:outputLabel />
+			<p:commandButton action="#{loginBean.giris}" value="Giris" update="growl"/>
+
+		</h:panelGrid>
+
+	</h:form>
+	
+</composite:implementation>
+
+</html>

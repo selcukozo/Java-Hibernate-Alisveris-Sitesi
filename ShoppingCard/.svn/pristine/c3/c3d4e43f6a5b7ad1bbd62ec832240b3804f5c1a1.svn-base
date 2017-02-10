@@ -1,0 +1,83 @@
+package main.java.entity;
+
+import java.util.List;
+
+public class Products {
+  private int id;
+  private String name;
+  private int supplierId;
+  private float price;
+  private int categoryId;
+  private String showName;
+
+  // Eski çalýþan kod
+  // Ekran görüntüsü için açtýk
+  List<String> images;
+
+  public List<String> getImages() {
+    return images;
+  }
+
+  public void setImages(List<String> images) {
+    this.images = images;
+  }
+
+  // Ekran görüntüsü için kapattýk
+  // private List<ProductImage> images;
+  //
+  // public List<ProductImage> getImages() {
+  // return images;
+  // }
+  //
+  // public void setImages(List<ProductImage> images) {
+  // this.images = images;
+  // }
+
+  public String getShowName() {
+    return showName;
+  }
+
+  public void setShowName(String showName) {
+    this.showName = showName;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public int getSupplierId() {
+    return supplierId;
+  }
+
+  public void setSupplierId(int suplierId) {
+    this.supplierId = suplierId;
+  }
+
+  public float getPrice() {
+    return price;
+  }
+
+  public void setPrice(float price) {
+    this.price = price;
+  }
+
+  public int getCategoryId() {
+    return categoryId;
+  }
+
+  public void setCategoryId(int categoryId) {
+    this.categoryId = categoryId;
+  }
+}

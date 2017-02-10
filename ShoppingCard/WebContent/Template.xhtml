@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+	<link href="css/main.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="main.js" />
+		<script type="text/javascript" src="js/snowfall.min.jquery.js" />
+		<script type="text/javascript">
+		$(function(){
+			$(document).snowfall({
+			round : true, //karın şekli.yuvarlak olsun
+			minSize: 1,//minimum boyutu
+			maxSize:15,//maxsimum boyutu
+			minSpeed:1,//minimum hızı
+			maxSpeed:5,//maxsimum hızı
+			flakeCount : 50,//kar yoğunluğu.Sayı artıkça daha çok kar geliyor.
+			shadow:false,//karın gölge durumu
+			collection : '.navbar'//karın birikeceği obje
+			});
+		});
+	</script>
+		</script>
+	
+
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+		crossorigin="anonymous" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous" />
+
+</h:head>
+
+<h:body>
+
+	<div class="container">
+
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Java Project</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<h:outputText value="#{counterBean.categoryMenu}" escape="false"
+					itemEscaped="false"></h:outputText>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="#">Ana Sayfa <span
+							class="sr-only">(current)</span></a></li>
+					<li><a href="#">Üye Girişi</a></li>
+					<li><a href="#">Sepet</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+		<!--/.container-fluid --> </nav>
+
+		<!-- Main component for a primary marketing message or call to action -->
+		<h:form id="categoryForm">
+
+			<p:remoteCommand name="menuRC"
+				action="#{productCollectionBean.menuAction}" oncomplete="" />
+
+			<div id="categoryDiv"></div>
+
+		</h:form>
+
+		<div id="content">
+			<ui:insert name="content" />
+		</div>
+
+
+		<div id="footer">
+			<h:outputLabel value="© Hocamız'ın katkılarıyla... :)" />
+		</div>
+
+
+	</div>
+	<!-- /container -->
+
+
+</h:body>
+
+</html>

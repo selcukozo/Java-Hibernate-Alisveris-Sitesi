@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14815645441040" configfile="/ShoppingCard/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="Login.xhtml" x="338" y="370" id="pf14821662792150" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf14821662792151 pf14821662792152" inlinks="pf14824211759030" path="Login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Administrator.xhtml" x="554" y="178" id="pf14821662792153" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14821662792151" path="Administrator.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Index.xhtml" x="554" y="562" id="pf14821662792154" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf14824211759031" inlinks="pf14821662792152" path="Index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registration.xhtml" x="122" y="370" id="pf14824211759032" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14824211759030" path="registration.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ProductsList.xhtml" id="pf14824211759033" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf14824211759034 pf14825819618980" inlinks="pf14824211759031 pf14825819618980" path="ProductsList.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ProductDetail.xhtml" id="pf14824211759035" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf14824211759034" path="ProductDetail.xhtml"/>
+  <links id="pf14821662792151" target="pf14821662792153" source="pf14821662792150" outcome="Administrator" redirect="true"/>
+  <links id="pf14821662792152" target="pf14821662792154" source="pf14821662792150" outcome="Index" redirect="true"/>
+  <links id="pf14824211759030" target="pf14821662792150" source="pf14824211759032" outcome="Login" redirect="true"/>
+  <links id="pf14824211759031" target="pf14824211759033" source="pf14821662792154" outcome="ProductsList" redirect="true"/>
+  <links id="pf14824211759034" target="pf14824211759035" source="pf14824211759033" outcome="Product-Detail" redirect="true"/>
+  <links id="pf14825819618980" target="pf14824211759033" source="pf14824211759033" outcome="ProductsList" redirect="true"/>
+</pageflow:Pageflow>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<f:metadata>
+	<f:viewParam name="page" value="#{adminBean.page}" />
+</f:metadata>
+
+<ui:composition template="AdministratorTemplate.xhtml">
+
+	<ui:define name="content">
+
+		<!-- Ana Menu -->
+		<c:if test="#{adminBean.page eq 0}">
+
+			<p:chart id="pie" type="pie" model="#{indexBean.pieModel}"
+				style="width:400px;height:300px" />
+
+		</c:if>
+
+		<!-- Kategoriler -->
+		<c:if test="#{adminBean.page eq 1}">
+
+
+
+
+
+		</c:if>
+
+		<!-- Kullanıcılar -->
+		<c:if test="#{adminBean.page eq 2}">
+
+			<p:dataTable id="userDataTable" var="user" value="#{adminBean.users}"
+				editable="true">
+
+				<f:facet name="header"> Kullanıcılar </f:facet>
+
+				<p:column headerText="Id">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.ID}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="modelInput" value="#{user.ID}"
+								style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Name">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.NAME}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{user.NAME}" style="width:100%" label="Name" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Surname">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.SURNAME}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{user.SURNAME}" style="width:100%"
+								label="Surname" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Role">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.ROLE.NAME}" />
+						</f:facet>
+						<f:facet name="input">
+							<h:selectOneMenu value="#{user.ROLE.ID}" style="width:100%">
+								<f:selectItems value="#{adminBean.roles}" var="role"
+									itemLabel="#{role.NAME}" itemValue="#{role.ID}" />
+							</h:selectOneMenu>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column style="width:32px">
+					<p:rowEditor />
+				</p:column>
+
+			</p:dataTable>
+
+		</c:if>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
